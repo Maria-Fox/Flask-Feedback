@@ -1,0 +1,22 @@
+{%extends "base.html"%}{%block title%}
+<title>Feedback</title>
+{%endblock%} {%block content%}
+<h1>Register</h1>
+<form action="/register" method="post" , id="reg-form">
+  <!-- Add content here -->
+  <!-- hidden tag = CSRF Cross Site Request Forgery Token  -->
+  {{ form.hidden_tag() }}
+  <!-- For visible form fields create label, field error displays -->
+  {% for field in form if field.widget.input_type != 'hidden' %}
+
+  <div class="form-div">
+    {{ field.label }} {{ field }} {% for error in field.errors %} {{ error }} {%
+    endfor %}
+  </div>
+
+  {% endfor %}
+  <button type="submit">Submit</button>
+</form>
+<br />
+<!-- closing page -->
+{%endblock%}
