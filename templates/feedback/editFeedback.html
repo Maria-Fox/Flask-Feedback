@@ -1,0 +1,45 @@
+{%extends "base.html"%}{%block title%}
+<title>Feedback</title>
+{%endblock%} {%block content%}
+<!-- Add content here -->
+<h1>Feedback</h1>
+{% if 'username' in session%}
+<a href="/logout" id="logout">Logout</a>
+<div id = "edit-fb">
+  <form
+    action="/feedback/{{feedback.id}}/update"
+    method="post"
+    ,
+    id="feedback-edit"
+  >
+    <!-- hidden tag = CSRF Cross Site Request Forgery Token  -->
+    {{ form.hidden_tag() }}
+    <!-- For visible form fields create label, field error displays -->
+    {% for field in form if field.widget.input_type != 'hidden' %}
+
+    <div class="form-div">
+      {{ field.label }} {{ field }} {% for error in field.errors %} {{ error }}
+      {% endfor %}
+    </div>
+    {% endfor %}
+    <button type="submit">Submit</button>
+  </form>
+</div>
+  <br />
+  <a href="/users/{{user}}">Visit Profile</a>
+  <!-- ************************************************************** -->
+
+  <!-- If username not in session -->
+  {%else%} {% with messages = get_flashed_messages() %} {% if messages %} {% for
+  message in messages %}
+  <p>{{message}}</p>
+  {% endfor %} {% endif %} {%endwith%}
+  <p>
+    Please <a href="/register">register</a> or <a href="/login">log in</a> to
+    create feedback.
+  </p>
+  {%endif%}
+
+  <!-- closing page -->
+  {%endblock%}
+</div>

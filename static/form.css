@@ -2,6 +2,39 @@ body {
   background-color: beige;
 }
 
+h1 {
+  background-color: rgba(57, 212, 204, 0.932);
+  width: 100vw;
+}
+
+#logout {
+  float: right;
+}
 .form-div {
   padding: 10px;
+}
+
+#reg-form {
+  background-color: bisque;
+}
+
+#profile-div {
+  border: 2px solid black;
+  padding: 5px;
+  margin: 5px;
+}
+
+#feedback-div {
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid rgba(57, 212, 204, 0.932);
+}
+
+#fb-new,
+#edit-fb {
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid rgba(57, 212, 204, 0.932);
+  display: flex;
+  align-items: center;
 }

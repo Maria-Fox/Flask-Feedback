@@ -1,18 +1,19 @@
 {%extends "base.html"%}{%block title%}
-<title>Feedback</title>
+<title>Sign In</title>
 {%endblock%} {%block content%}
-<h1>Register</h1>
-<form action="/register" method="post" , id="reg-form">
+<h1>Sign In</h1>
+<form action="/login" method="post" , id="reg-form">
   <!-- Add content here -->
   <!-- Messages here -->
   {% with messages = get_flashed_messages() %} {% if messages %} {% for message
   in messages %}
   <p>{{message}}</p>
   {% endfor %} {% endif %} {%endwith%}
-  <!-- hidden tag = CSRF Cross Site Request Forgery Token  -->
-  {{ form.hidden_tag() }}
-  <!-- For visible form fields create label, field error displays -->
-  {% for field in form if field.widget.input_type != 'hidden' %}
+
+  <!-- Form below -->
+
+  {{ form.hidden_tag() }} {% for field in form if field.widget.input_type !=
+  'hidden' %}
 
   <div class="form-div">
     {{ field.label }} {{ field }} {% for error in field.errors %} {{ error }} {%
@@ -22,8 +23,9 @@
   {% endfor %}
   <button type="submit">Submit</button>
 </form>
-<h2>Already have an account?</h2>
-<a href="/login">Sign in</a>
+
+<h2>Don't have an account?</h2>
+<a href="/register">Register here</a>
 <br />
 <!-- closing page -->
 {%endblock%}

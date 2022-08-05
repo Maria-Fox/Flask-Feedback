@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, EmailField
+from wtforms import StringField, PasswordField, EmailField, TextAreaField
 from wtforms.validators import InputRequired, Optional, Length
 
 # Pass in instance of FlaskForm to each class
@@ -13,5 +13,15 @@ class Registration_Form(FlaskForm):
     first_name = StringField("First Name", validators=[InputRequired(), Length(max=30)])
     last_name = StringField("Last Name", validators=[InputRequired(), Length(max=30)])
 
+class Sign_in(FlaskForm):
+    '''Creates sign in form for user to log into application.'''
 
+    username = StringField("Username", validators =[InputRequired(), Length(max=20)])
+    password = PasswordField("Password", validators=[InputRequired()])
 
+class Feedback_form(FlaskForm):
+
+    '''Formt to allow suer to create new feedback.'''
+
+    title = StringField("Title", validators = [InputRequired(), Length(max=100)])
+    content = TextAreaField("Content", validators=[InputRequired()])
